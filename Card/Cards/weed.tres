@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bl8dlgiugcco3"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_cn7cs"]
+[ext_resource type="Resource" uid="uid://bd5dnrexr4012" path="res://Effects/weed.tres" id="1_wyviv"]
+[ext_resource type="Texture2D" uid="uid://r36i8m3r6k4t" path="res://Assets/CardIcon/weed.png" id="2_pyqyr"]
+
+[resource]
+script = ExtResource("1_cn7cs")
+name = "Weed"
+value = 7
+mult = 7.0
+icon = ExtResource("2_pyqyr")
+rarity = 2
+effect = ExtResource("1_wyviv")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

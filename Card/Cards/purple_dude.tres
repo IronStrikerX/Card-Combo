@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://b0uewk0g15su0"]
+
+[ext_resource type="Resource" uid="uid://dswfygiav0gf8" path="res://Effects/purple_dude.tres" id="1_46y87"]
+[ext_resource type="Texture2D" uid="uid://c5pwn07abd0pm" path="res://Assets/CardIcon/purple_man.png" id="2_ia0et"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="3_23scn"]
+
+[resource]
+script = ExtResource("3_23scn")
+name = "Purple Dude"
+value = 6
+mult = 2.0
+icon = ExtResource("2_ia0et")
+rarity = 1
+effect = ExtResource("1_46y87")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

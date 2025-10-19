@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://cbx65t4p7swdm"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_nd40c"]
+[ext_resource type="Resource" uid="uid://bkyjq4lp5s30e" path="res://Effects/hivemind.tres" id="1_yo2hv"]
+[ext_resource type="Texture2D" uid="uid://dhe04pwblc0ah" path="res://Assets/CardIcon/hivemind.png" id="2_57jkq"]
+
+[resource]
+script = ExtResource("1_nd40c")
+name = "Red Slime"
+value = 3
+mult = 3.0
+icon = ExtResource("2_57jkq")
+rarity = 3
+effect = ExtResource("1_yo2hv")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

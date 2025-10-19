@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://d1q0mp0gm5gjh"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_b6iw0"]
+[ext_resource type="Resource" uid="uid://dt37vfd0aq0ej" path="res://Effects/red_guy.tres" id="2_ro372"]
+[ext_resource type="Texture2D" uid="uid://cifr3bsunvkjg" path="res://Assets/CardIcon/red_dude.png" id="2_ux51y"]
+
+[resource]
+script = ExtResource("1_b6iw0")
+name = "Red Dude"
+description = "Gives +5 mult to next played card"
+value = 1
+mult = 5.0
+icon = ExtResource("2_ux51y")
+effect = ExtResource("2_ro372")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

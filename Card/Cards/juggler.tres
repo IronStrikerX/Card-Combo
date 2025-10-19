@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bcu78cqe2a58"]
+
+[ext_resource type="Resource" uid="uid://bjqc8hnaxmn5v" path="res://Effects/juggler.tres" id="2_1265k"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="2_jnmru"]
+[ext_resource type="Texture2D" uid="uid://dq1c6miquyabb" path="res://Assets/CardIcon/juggler.png" id="3_tt5ym"]
+
+[resource]
+script = ExtResource("2_jnmru")
+name = "Jugler"
+description = "if you draw this after discarding gain 4 value"
+value = 3
+mult = 4.0
+icon = ExtResource("3_tt5ym")
+rarity = 1
+effect = ExtResource("2_1265k")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

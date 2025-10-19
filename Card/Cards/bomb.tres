@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://b61u0asxxucv8"]
+
+[ext_resource type="Resource" uid="uid://n0iy5kv00r1g" path="res://Effects/bomb.tres" id="1_384a4"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_k2eej"]
+[ext_resource type="Texture2D" uid="uid://4j5kh0jrlctp" path="res://Assets/CardIcon/bomb.png" id="2_l6nog"]
+
+[resource]
+script = ExtResource("1_k2eej")
+name = "bomb"
+extra_description = "Effect applied on play as wel"
+value = 5
+mult = 5.0
+icon = ExtResource("2_l6nog")
+rarity = 2
+effect = ExtResource("1_384a4")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

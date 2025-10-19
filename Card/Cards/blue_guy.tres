@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://csm1kkmdqmul2"]
+
+[ext_resource type="Resource" uid="uid://c6leiu7icpa0k" path="res://Effects/blue_guy.tres" id="2_74ery"]
+[ext_resource type="Texture2D" uid="uid://d1wijdh51bfn" path="res://Assets/CardIcon/blue_guy.png" id="2_g8ukt"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="3_74ery"]
+
+[resource]
+script = ExtResource("3_74ery")
+name = "Blue Guy"
+description = "+ 5 value on the next played card "
+value = 5
+mult = 1.0
+icon = ExtResource("2_g8ukt")
+effect = ExtResource("2_74ery")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

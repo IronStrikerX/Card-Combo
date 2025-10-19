@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://dneppgtxk2es5"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_52oq8"]
+
+[resource]
+script = ExtResource("1_52oq8")
+name = "emperor"
+description = "Hes a conquerer"
+value = 40
+mult = 7.0
+rarity = 3
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

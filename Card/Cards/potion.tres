@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bl7wxwtjj84rr"]
+
+[ext_resource type="Resource" uid="uid://bawitol8mc6b1" path="res://Effects/potion.tres" id="1_5x6m8"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_vtxpm"]
+[ext_resource type="Texture2D" uid="uid://bw6uhvj558tvd" path="res://Assets/CardIcon/potion.png" id="2_wmhmr"]
+
+[resource]
+script = ExtResource("1_vtxpm")
+name = "Potion"
+value = 5
+mult = 13.0
+icon = ExtResource("2_wmhmr")
+rarity = 4
+effect = ExtResource("1_5x6m8")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

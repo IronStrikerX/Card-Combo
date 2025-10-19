@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://dfd02orv2jmmt"]
+
+[ext_resource type="Resource" uid="uid://c8185xcq7wt0y" path="res://Effects/green_guy.tres" id="1_csyfm"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_j5bp2"]
+[ext_resource type="Texture2D" uid="uid://b3hoyorrlo0yv" path="res://Assets/CardIcon/green guy.png" id="2_cq8hr"]
+
+[resource]
+script = ExtResource("1_j5bp2")
+name = "Green Guy"
+extra_description = "X: current +2  Y: current +4"
+value = 8
+mult = 6.0
+icon = ExtResource("2_cq8hr")
+rarity = 4
+effect = ExtResource("1_csyfm")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

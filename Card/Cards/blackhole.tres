@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://36q8xvwpfe6c"]
+
+[ext_resource type="Resource" uid="uid://c7xa6h1m76k0u" path="res://Effects/blackhole.tres" id="1_6105p"]
+[ext_resource type="Texture2D" uid="uid://d2rh4boi04a0f" path="res://Assets/CardIcon/blackhole.png" id="2_sf5vk"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="3_67ixn"]
+
+[resource]
+script = ExtResource("3_67ixn")
+name = "Blackhole"
+value = 4
+mult = 10.0
+icon = ExtResource("2_sf5vk")
+rarity = 3
+effect = ExtResource("1_6105p")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

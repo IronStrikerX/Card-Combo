@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bgdyhftvvhme6"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_12dbv"]
+[ext_resource type="Resource" uid="uid://grn7ogwl8kjd" path="res://Effects/smiling_guy.tres" id="1_mqhxx"]
+[ext_resource type="Texture2D" uid="uid://cfujdl07qfggd" path="res://Assets/CardIcon/smiling_guy.png" id="2_7ee47"]
+
+[resource]
+script = ExtResource("1_12dbv")
+name = "Smiling Guy"
+value = 8
+mult = 3.0
+icon = ExtResource("2_7ee47")
+rarity = 2
+effect = ExtResource("1_mqhxx")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

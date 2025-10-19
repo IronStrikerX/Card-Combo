@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardEffectResource" load_steps=2 format=3 uid="uid://bf00mrlvuhqtf"]
+
+[ext_resource type="Script" uid="uid://cmtqomlsfmm05" path="res://Effects/Effect.gd" id="1_31bfi"]
+
+[resource]
+script = ExtResource("1_31bfi")
+name = "Flower"
+duration = 2
+value_bonus = -1
+mult_bonus = -1
+metadata/_custom_type_script = "uid://cmtqomlsfmm05"

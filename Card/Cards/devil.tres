@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://c7ywng5nw1wtg"]
+
+[ext_resource type="Resource" uid="uid://bqk5daws3hoh6" path="res://Effects/devil.tres" id="1_4eevb"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_xqn3t"]
+[ext_resource type="Texture2D" uid="uid://dtts4skw3p05e" path="res://Assets/CardIcon/demon.png" id="2_kk815"]
+
+[resource]
+script = ExtResource("1_xqn3t")
+name = "Devil"
+extra_description = "gain +3 value per discarded card"
+value = 4
+mult = 10.0
+icon = ExtResource("2_kk815")
+rarity = 3
+effect = ExtResource("1_4eevb")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

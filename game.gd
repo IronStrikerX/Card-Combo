@@ -1,0 +1,227 @@
+extends Control
+
+@onready var description_label: Label = %DescriptionLabel
+@onready var score_label: Label = %ScoreLabel
+@onready var selected_slot: Control = %SelectedSlot
+@onready var hand: HBoxContainer = %Hand
+@onready var cards_left_label: Label = %CardsLeftLabel
+@onready var selected_card_name: Label = %name
+@onready var effect_icons: GridContainer = %EffectIcons
+@onready var tooltip_label: Label = %Tooltip_label
+@onready var panel: Panel = %Panel
+@onready var buff_label: Label = %BuffLabel
+
+
+var selected_card: CardUI
+var score: int : set = _set_score
+
+var effect_duration_left: int
+
+var active_effects := [] 
+
+var icon_clicked := false
+
+func _set_score(value: int):
+	score = value
+	score_label.text = ("Score: " + str(score))
+
+func _ready() -> void:
+	DeckManager.connect("effect_triggered", Callable(self, "_on_effect_triggered"))
+	DeckManager.connect("effect_subtract", Callable(self, "_duration_subtract"))
+	
+	selected_slot.get_child(0).queue_free()
+	for child in hand.get_children():
+		child.queue_free()
+	for child in effect_icons.get_children():
+		child.queue_free()
+	
+	DeckManager.start_round()
+	DeckManager.inplay_deck.shuffle()
+	DeckManager.in_deck_effect()
+	for i in range(5):
+		add_card_to_hand()
+	update_deck_size()
+	description_label.text = ""
+	selected_card_name.text = ""
+	score = 0
+
+func _on_card_selected(card_ui: CardUI) -> void:
+	card_ui.is_animating = true
+	var old_global_pos = card_ui.global_position 
+	if card_ui.source == card_ui.Source.HAND:
+		if selected_card:
+			deselect(selected_card)
+
+		selected_card = card_ui
+		
+		if card_ui.get_parent():
+			card_ui.get_parent().remove_child(card_ui)
+		selected_slot.add_child(card_ui)
+		
+		card_ui.global_position = old_global_pos
+		card_ui.source = card_ui.Source.SELECT
+		
+		var target_global_pos = selected_slot.global_position
+		var tween = create_tween()
+		tween.tween_property(card_ui, "global_position", target_global_pos, 0.3)
+		tween.tween_property(card_ui, "scale", Vector2(1, 1), 0.3)
+		
+		description_label.text = card_ui.card.data.description
+		selected_card_name.text  = card_ui.card.data.name
+		
+	elif card_ui.source == card_ui.Source.SELECT:
+		DeckManager.play_card(card_ui.card)
+		# Move slightly up first
+		var tween1 = create_tween()
+		tween1.tween_property(card_ui, "global_position", card_ui.global_position + Vector2(0, 25), 0.2)
+		await tween1.finished
+		
+		# Move up while rotating side-to-side
+		var tween2 = create_tween()
+		tween2.parallel()
+		tween2.tween_property(card_ui, "rotation_degrees", 15, 0.2)  # everything after this happens at the same time
+		tween2.tween_property(card_ui, "global_position", card_ui.global_position + Vector2(0, -150), 0.2)
+
+		await tween2.finished
+		
+		score += DeckManager.apply_score(card_ui.card)
+		
+		update_deck_size()
+		add_card_to_hand()
+		DeckManager.in_deck_effect(false)
+		card_ui.queue_free()
+		update_buff_label()
+		
+	card_ui.is_animating = false
+
+func deselect(card_ui: CardUI):
+	if card_ui.get_parent():
+		card_ui.get_parent().remove_child(card_ui)
+		hand.add_child(card_ui)
+		card_ui.source = card_ui.Source.HAND
+		description_label.text = ""
+
+func add_card_to_hand():
+	var new_card = DeckManager.draw_card()
+	if new_card:
+		var card_ui = DeckManager.CARD_UI.instantiate()
+		hand.add_child(card_ui)
+		card_ui.set_up(new_card, card_ui.Source.HAND)
+		card_ui.connect("select_card", Callable(self, "_on_card_selected"))
+		card_ui.connect("right_click", Callable(self, "_on_card_discard"))
+
+func _on_card_discard(_card_ui: CardUI):
+	add_card_to_hand()
+	DeckManager.in_deck_effect(false)
+	update_deck_size()
+	update_buff_label()
+
+func update_deck_size():
+	cards_left_label.text = str(DeckManager.inplay_deck.size())
+	if DeckManager.inplay_deck.size() == 0 and hand.get_child_count() == 0:
+		DeckManager.in_game = false
+		DeckManager.score += score
+		await get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://loot.tscn")
+
+func update_buff_label():
+	buff_label.text = "v: %s m: %s\nx%s x%s" % [DeckManager.next_card_add[0][0], DeckManager.next_card_add[0][1], DeckManager.next_card_mult[0][0], DeckManager.next_card_mult[0][1]]
+
+func _on_effect_triggered(card: Card) -> void:
+	if card.icon == null:
+		return
+	
+	# Create a wrapper Control so HBox won't interfere
+	var wrapper = Control.new()
+	wrapper.custom_minimum_size = Vector2(16, 16)
+	effect_icons.add_child(wrapper)
+	
+	# Create the TextureRect for the icon
+	var icon_sprite = TextureRect.new()
+	icon_sprite.texture = card.icon
+	icon_sprite.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon_sprite.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	icon_sprite.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	icon_sprite.scale = Vector2(0,0) # start tiny
+	wrapper.add_child(icon_sprite)
+	
+	icon_sprite.connect("mouse_entered", Callable(self, "_on_icon_hovered").bind(icon_sprite, card))
+	icon_sprite.connect("mouse_exited", Callable(self, "_on_icon_exited"))
+	icon_sprite.connect("gui_input", Callable(self, "_on_gui_input"))
+	
+	icon_sprite.pivot_offset = icon_sprite.size / 2
+	panel.pivot_offset = panel.size / 2
+	
+	active_effects.append({
+		"effect": card.effect,
+		"icon": icon_sprite,   # store the icon, not the wrapper
+		"wrapper": wrapper,    # optional, for layout
+		"remaining_duration": card.effect.duration
+	})
+
+	# Animate the scale to appear
+	var tween = create_tween()
+	tween.tween_property(icon_sprite, "scale", Vector2(1,1), 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
+	# Store active effect
+
+	print("added effect icon: ", card.name)
+
+
+
+func _on_icon_hovered(icon_sprite: TextureRect, card: Card):
+	# Find the active effect entry that corresponds to this icon
+	var remaining_duration = ""
+	for entry in active_effects:
+		if entry["icon"] == icon_sprite:
+			remaining_duration = str(entry["remaining_duration"])
+			break
+
+	tooltip_label.text = "%s\n%s\nDuration: %s" % [card.name, card.description, remaining_duration]
+
+	if not icon_clicked:
+		panel.scale = Vector2(0, 0)  # start small
+		var tween2 = panel.create_tween()
+		tween2.tween_property(panel, "scale", Vector2(1, 1), 0.1)
+	
+	panel.visible = true
+
+
+
+func _on_icon_exited():
+	if not icon_clicked:
+		panel.visible = false
+	
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if icon_clicked:
+			icon_clicked = false
+			panel.visible = false
+		else:
+			icon_clicked = true
+			
+		
+
+func _duration_subtract() -> void:
+	var expired: Array = []
+	for entry in active_effects:
+		entry["remaining_duration"] -= 1
+		if entry["remaining_duration"] <= 0:
+			expired.append(entry)
+		else:
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			tween.parallel().tween_property(entry["wrapper"], "rotation_degrees", 5, 0.07)
+			tween.tween_property(entry["wrapper"], "rotation_degrees", -5, 0.07)
+			tween.tween_property(entry["wrapper"], "rotation_degrees", 0, 0.07)
+
+	# Clean up expired effects
+	for e in expired:
+		if e["wrapper"] and is_instance_valid(e["wrapper"]):
+			pass
+			#var tween = create_tween()
+			#e["icon"].pivot_offset = e["icon"].size / 2
+			#tween.tween_property(e["icon"], "scale", Vector2(0,0), 0.20).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			#await tween.finished
+			e["wrapper"].queue_free()
+		active_effects.erase(e)

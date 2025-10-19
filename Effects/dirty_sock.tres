@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardEffectResource" load_steps=2 format=3 uid="uid://b3qmurps01k7e"]
+
+[ext_resource type="Script" uid="uid://cmtqomlsfmm05" path="res://Effects/Effect.gd" id="1_ma7qp"]
+
+[resource]
+script = ExtResource("1_ma7qp")
+name = "Dirty Sock"
+trigger = 1
+duration = 5
+mult_bonus = 2
+metadata/_custom_type_script = "uid://cmtqomlsfmm05"

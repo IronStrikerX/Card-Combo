@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://4lbwuvujhbcn"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="2_0epim"]
+[ext_resource type="Resource" uid="uid://ba2mfyk6cxf7o" path="res://Effects/turtle.tres" id="2_oc1s1"]
+[ext_resource type="Texture2D" uid="uid://diotuo1u5082i" path="res://Assets/CardIcon/turtle.png" id="3_ni11y"]
+
+[resource]
+script = ExtResource("2_0epim")
+name = "Turtle"
+description = "increase next card mult and value by 4 if no card in deck"
+value = 4
+mult = 2.0
+icon = ExtResource("3_ni11y")
+effect = ExtResource("2_oc1s1")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

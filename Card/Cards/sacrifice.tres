@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://exrv1ij5mkse"]
+
+[ext_resource type="Resource" uid="uid://r58v7mtvtail" path="res://Effects/sacrifice.tres" id="1_lctya"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_v0s4x"]
+[ext_resource type="Texture2D" uid="uid://b3m17ortrkuun" path="res://Assets/CardIcon/sacrifice.png" id="2_evlok"]
+
+[resource]
+script = ExtResource("1_v0s4x")
+name = "Sacrifice"
+value = 1
+mult = 1.0
+icon = ExtResource("2_evlok")
+rarity = 2
+effect = ExtResource("1_lctya")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

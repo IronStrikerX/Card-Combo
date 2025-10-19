@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl1ocpkhi3kaf"]
+
+[ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="1_joivg"]
+[ext_resource type="Script" uid="uid://bp23xdkrpbkvx" path="res://loot.gd" id="1_m0gsf"]
+[ext_resource type="PackedScene" uid="uid://y8buv1lbsbcc" path="res://Card/CardUI/CardUI.tscn" id="2_e547a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e547a"]
+bg_color = Color(0.21960784, 0.2509804, 0.06666667, 1)
+
+[sub_resource type="Theme" id="Theme_cu8i4"]
+default_font = ExtResource("1_joivg")
+
+[sub_resource type="Theme" id="Theme_mk61x"]
+default_font = ExtResource("1_joivg")
+
+[sub_resource type="Theme" id="Theme_e547a"]
+default_font = ExtResource("1_joivg")
+
+[sub_resource type="Theme" id="Theme_m0gsf"]
+
+[sub_resource type="Theme" id="Theme_lfujy"]
+default_font = ExtResource("1_joivg")
+
+[node name="Loot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m0gsf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e547a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="RoundLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_cu8i4")
+theme_override_font_sizes/font_size = 30
+text = "Round: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedSlot" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="CardUI" parent="MarginContainer/VBoxContainer/HBoxContainer2/SelectedSlot" instance=ExtResource("2_e547a")]
+layout_mode = 0
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme = SubResource("Theme_mk61x")
+theme_override_font_sizes/font_size = 32
+text = "999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(232, 99)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="NewCards" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CardUI" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("2_e547a")]
+layout_mode = 2
+
+[node name="CardUI2" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("2_e547a")]
+layout_mode = 2
+
+[node name="CardUI3" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("2_e547a")]
+layout_mode = 2
+
+[node name="CardUI4" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("2_e547a")]
+layout_mode = 2
+
+[node name="CardUI5" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("2_e547a")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_e547a")
+text = "Skip"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_m0gsf")
+theme_override_fonts/font = ExtResource("1_joivg")
+text = "name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(70, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_lfujy")
+text = "hey this is a description, you should collect all five cards because it is so good."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

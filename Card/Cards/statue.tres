@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://by3ks1hjigy8r"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="2_gg3el"]
+[ext_resource type="Resource" uid="uid://cvh110tpi52nf" path="res://Effects/statue.tres" id="2_ik27d"]
+[ext_resource type="Texture2D" uid="uid://dpntnodaf1jsf" path="res://Assets/CardIcon/statue.png" id="3_tf20r"]
+
+[resource]
+script = ExtResource("2_gg3el")
+name = "Statue"
+description = "While in deck, all other cards gain +1 mult."
+value = 7
+mult = 2.0
+icon = ExtResource("3_tf20r")
+rarity = 1
+effect = ExtResource("2_ik27d")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

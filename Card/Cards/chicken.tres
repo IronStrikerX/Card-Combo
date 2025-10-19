@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://doje0u6om4nni"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="2_byymp"]
+[ext_resource type="Resource" uid="uid://bre7l0nuq001n" path="res://Effects/chicken.tres" id="2_ul257"]
+[ext_resource type="Texture2D" uid="uid://clh21cxodw7sk" path="res://Assets/CardIcon/chicken.png" id="3_ul257"]
+
+[resource]
+script = ExtResource("2_byymp")
+name = "Chicken"
+description = "next two cards have their mult and value increase by 3"
+value = 1
+mult = 1.0
+icon = ExtResource("3_ul257")
+effect = ExtResource("2_ul257")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

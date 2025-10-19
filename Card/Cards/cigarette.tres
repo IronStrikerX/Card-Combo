@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://dp2jv2mgnrpdr"]
+
+[ext_resource type="Resource" uid="uid://cthwplgh1if4y" path="res://Effects/cigarette.tres" id="2_5boy1"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="2_godsp"]
+[ext_resource type="Texture2D" uid="uid://b75vn7cbvcltu" path="res://Assets/CardIcon/cigarette.png" id="3_xkfwy"]
+
+[resource]
+script = ExtResource("2_godsp")
+name = "Cigarette"
+description = "Discard: +2 value for the next 2 cards"
+value = 3
+mult = 3.0
+icon = ExtResource("3_xkfwy")
+effect = ExtResource("2_5boy1")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

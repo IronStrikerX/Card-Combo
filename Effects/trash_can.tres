@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardEffectResource" load_steps=2 format=3 uid="uid://bsr112gqwckp1"]
+
+[ext_resource type="Script" uid="uid://cmtqomlsfmm05" path="res://Effects/Effect.gd" id="1_t3ffp"]
+
+[resource]
+script = ExtResource("1_t3ffp")
+name = "Trash Can"
+trigger = 1
+duration = 3
+mult_bonus = 3
+metadata/_custom_type_script = "uid://cmtqomlsfmm05"

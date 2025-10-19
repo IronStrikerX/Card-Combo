@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://cb4utpg6w5wmp"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_51k1q"]
+[ext_resource type="Texture2D" uid="uid://3p6ub8dn0ywf" path="res://Assets/CardIcon/Sun.png" id="1_f1roj"]
+[ext_resource type="Resource" uid="uid://br5pqykyi741e" path="res://Effects/sun.tres" id="1_pm8hj"]
+
+[resource]
+script = ExtResource("1_51k1q")
+name = "Sun"
+value = 12
+mult = 4.0
+icon = ExtResource("1_f1roj")
+rarity = 3
+effect = ExtResource("1_pm8hj")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

@@ -1,0 +1,203 @@
+[gd_scene load_steps=16 format=3 uid="uid://cvkaja3ulrmqs"]
+
+[ext_resource type="Script" uid="uid://c8rrss3doimef" path="res://Inventory/inventory_ui.gd" id="1_n0pvb"]
+[ext_resource type="PackedScene" uid="uid://y8buv1lbsbcc" path="res://Card/CardUI/CardUI.tscn" id="2_jhqvo"]
+[ext_resource type="Resource" uid="uid://c3jvmydunt8h3" path="res://Card/StartingDecks/basic.tres" id="2_n0pvb"]
+[ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="4_ju6sq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34y5v"]
+bg_color = Color(0.21929252, 0.30836454, 0.34550986, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r57pj"]
+bg_color = Color(0.10566319, 0.15843368, 0.17908302, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s43p6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5v8q7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf3dx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_34y5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r57pj"]
+
+[sub_resource type="Theme" id="Theme_jn3b8"]
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_s43p6")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_5v8q7")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_gf3dx")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_34y5v")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_r57pj")
+
+[sub_resource type="Theme" id="Theme_5bopx"]
+default_font = ExtResource("4_ju6sq")
+
+[sub_resource type="Theme" id="Theme_r57pj"]
+default_font = ExtResource("4_ju6sq")
+default_font_size = 0
+
+[sub_resource type="Theme" id="Theme_o6um4"]
+default_font = ExtResource("4_ju6sq")
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n0pvb")
+starting_deck = ExtResource("2_n0pvb")
+
+[node name="BackgroundColor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="BackgroundColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_34y5v")
+
+[node name="Panel2" type="Panel" parent="BackgroundColor"]
+custom_minimum_size = Vector2(50, 180)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.897
+anchor_right = 0.897
+offset_left = -37.04001
+offset_right = 33.32666
+offset_bottom = 180.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r57pj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme = SubResource("Theme_jn3b8")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 180)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="CardUI" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI2" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI3" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI4" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI5" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI6" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI7" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI8" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI9" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI10" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI11" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI12" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI13" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI14" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="CardUI15" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SelectedCardName" type="Label" parent="HBoxContainer/Actions"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_5bopx")
+text = "Selected Card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedSlot" type="Control" parent="HBoxContainer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Actions"]
+custom_minimum_size = Vector2(50, 71)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Description" type="Label" parent="HBoxContainer/Actions/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_r57pj")
+theme_override_font_sizes/font_size = 16
+text = "this is a test"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/Actions"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.95
+theme = SubResource("Theme_o6um4")
+text = "Play"
+
+[connection signal="pressed" from="HBoxContainer/Actions/PlayButton" to="." method="_on_play_button_pressed"]
