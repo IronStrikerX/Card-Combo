@@ -1,5 +1,5 @@
 extends Control
-
+# ========== Game Info ================
 @onready var description_label: Label = %DescriptionLabel
 @onready var score_label: Label = %ScoreLabel
 @onready var selected_slot: Control = %SelectedSlot
@@ -10,7 +10,13 @@ extends Control
 @onready var tooltip_label: Label = %Tooltip_label
 @onready var panel: Panel = %Panel
 @onready var buff_label: Label = %BuffLabel
-
+# ============ Deck Info =============
+@onready var grid_container_deck_info: GridContainer = %GridContainerDeckInfo
+@onready var selected_slot_name: Label = %SelectedSlotName
+@onready var selected_slot_deck_info: Control = %SelectedSlotDeckInfo
+@onready var description_deck_info: Label = %DescriptionDeckInfo
+@onready var discard_deck_size: Label = %DiscardDeckSize
+@onready var deck_info: Control = %DeckInfo
 
 var selected_card: CardUI
 var score: int : set = _set_score
@@ -26,14 +32,17 @@ func _set_score(value: int):
 	score_label.text = ("Score: " + str(score))
 
 func _ready() -> void:
+	$GameUI/MarginContainer/VBoxContainer/BottomLayer/Deck.connect("deck_info", Callable(self, "_on_deck_info_clicked"))
 	DeckManager.connect("effect_triggered", Callable(self, "_on_effect_triggered"))
 	DeckManager.connect("effect_subtract", Callable(self, "_duration_subtract"))
-	
+	deck_info.visible = false
+
 	selected_slot.get_child(0).queue_free()
 	for child in hand.get_children():
 		child.queue_free()
 	for child in effect_icons.get_children():
 		child.queue_free()
+
 	
 	DeckManager.start_round()
 	DeckManager.inplay_deck.shuffle()
@@ -56,48 +65,67 @@ func _on_card_selected(card_ui: CardUI) -> void:
 		
 		if card_ui.get_parent():
 			card_ui.get_parent().remove_child(card_ui)
-		selected_slot.add_child(card_ui)
+			
+		var target_global_pos
+		if deck_info.visible == false:
+			selected_slot.add_child(card_ui)
 		
-		card_ui.global_position = old_global_pos
-		card_ui.source = card_ui.Source.SELECT
-		
-		var target_global_pos = selected_slot.global_position
+			card_ui.global_position = old_global_pos
+			card_ui.source = card_ui.Source.SELECT
+			
+			target_global_pos = selected_slot.global_position
+			description_label.text = card_ui.card.data.description
+			selected_card_name.text  = card_ui.card.data.name
+		else:
+			selected_slot_deck_info.add_child(card_ui)
+			card_ui.global_position = old_global_pos
+			card_ui.source = card_ui.Source.SELECT
+			
+			target_global_pos = selected_slot_deck_info.global_position
+			description_deck_info.text = card_ui.card.data.description
+			selected_slot_name.text  = card_ui.card.data.name
+
 		var tween = create_tween()
-		tween.tween_property(card_ui, "global_position", target_global_pos, 0.3)
-		tween.tween_property(card_ui, "scale", Vector2(1, 1), 0.3)
-		
-		description_label.text = card_ui.card.data.description
-		selected_card_name.text  = card_ui.card.data.name
+		tween.tween_property(card_ui, "global_position", target_global_pos, 0.2)
+		tween.tween_property(card_ui, "scale", Vector2(1, 1), 0.2)
 		
 	elif card_ui.source == card_ui.Source.SELECT:
-		DeckManager.play_card(card_ui.card)
-		# Move slightly up first
-		var tween1 = create_tween()
-		tween1.tween_property(card_ui, "global_position", card_ui.global_position + Vector2(0, 25), 0.2)
-		await tween1.finished
-		
-		# Move up while rotating side-to-side
-		var tween2 = create_tween()
-		tween2.parallel()
-		tween2.tween_property(card_ui, "rotation_degrees", 15, 0.2)  # everything after this happens at the same time
-		tween2.tween_property(card_ui, "global_position", card_ui.global_position + Vector2(0, -150), 0.2)
+		if deck_info.visible == false:
+			DeckManager.play_card(card_ui.card)
+			# Move slightly up first
+			var tween1 = create_tween()
+			tween1.tween_property(card_ui, "global_position", card_ui.global_position + Vector2(0, 25), 0.1)
+			await tween1.finished
+			
+			# Move up while rotating side-to-side
+			var tween2 = create_tween()
+			tween2.parallel()
+			tween2.tween_property(card_ui, "rotation_degrees", 15, 0.1)  # everything after this happens at the same time
+			tween2.tween_property(card_ui, "global_position", card_ui.global_position + Vector2(0, -150), 0.1)
 
-		await tween2.finished
-		
-		score += DeckManager.apply_score(card_ui.card)
-		
-		update_deck_size()
-		add_card_to_hand()
-		DeckManager.in_deck_effect(false)
-		card_ui.queue_free()
-		update_buff_label()
-		
+			await tween2.finished
+			score += DeckManager.apply_score(card_ui.card)
+			add_card_to_hand()
+			DeckManager.in_deck_effect(false)
+			update_deck_size()
+			update_buff_label()
+			card_ui.queue_free()
+		else:
+			if card_ui.get_parent():
+				card_ui.get_parent().remove_child(card_ui)
+				grid_container_deck_info.add_child(card_ui)
+				card_ui.source = card_ui.Source.HAND
+				description_label.text = ""
+			
 	card_ui.is_animating = false
 
 func deselect(card_ui: CardUI):
 	if card_ui.get_parent():
 		card_ui.get_parent().remove_child(card_ui)
-		hand.add_child(card_ui)
+		if deck_info.visible == false:
+			hand.add_child(card_ui)
+		else:
+			grid_container_deck_info.add_child(card_ui)
 		card_ui.source = card_ui.Source.HAND
 		description_label.text = ""
 
@@ -122,8 +150,19 @@ func update_deck_size():
 		DeckManager.in_game = false
 		DeckManager.score += score
 		await get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://loot.tscn")
+		get_tree().change_scene_to_file("res://Scenes/loot.tscn")
 
+func _on_deck_info_clicked():
+	deck_info.visible = true
+	discard_deck_size.text = "D: %s\nP: %s" % [str(DeckManager.discard_deck.size()), str(DeckManager.played_deck.size())]
+	var shuffled_in_play_cards = DeckManager.inplay_deck.duplicate()
+	shuffled_in_play_cards.shuffle()
+	for card_instance in shuffled_in_play_cards:
+		var card_ui = DeckManager.CARD_UI.instantiate()
+		grid_container_deck_info.add_child(card_ui)
+		card_ui.set_up(card_instance, card_ui.Source.HAND)
+		card_ui.connect("select_card", Callable(self, "_on_card_selected"))
+	
 func update_buff_label():
 	buff_label.text = "v: %s m: %s\nx%s x%s" % [DeckManager.next_card_add[0][0], DeckManager.next_card_add[0][1], DeckManager.next_card_mult[0][0], DeckManager.next_card_mult[0][1]]
 
@@ -161,7 +200,7 @@ func _on_effect_triggered(card: Card) -> void:
 
 	# Animate the scale to appear
 	var tween = create_tween()
-	tween.tween_property(icon_sprite, "scale", Vector2(1,1), 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(icon_sprite, "scale", Vector2(1,1), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 	# Store active effect
 
@@ -221,7 +260,15 @@ func _duration_subtract() -> void:
 			pass
 			#var tween = create_tween()
 			#e["icon"].pivot_offset = e["icon"].size / 2
-			#tween.tween_property(e["icon"], "scale", Vector2(0,0), 0.20).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			#tween.tween_property(e["icon"], "scale", Vector2(0,0), 0.10).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 			#await tween.finished
 			e["wrapper"].queue_free()
 		active_effects.erase(e)
+
+func _on_play_button_pressed() -> void:
+	await get_tree().create_timer(0.3).timeout
+	for child in grid_container_deck_info.get_children():
+		child.queue_free()
+	for child in selected_slot_deck_info.get_children():
+		child.queue_free()
+	deck_info.visible = false

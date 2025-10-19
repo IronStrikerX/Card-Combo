@@ -5,8 +5,10 @@
 [resource]
 script = ExtResource("1_rp607")
 name = "Sword"
-type = 2
+type = 4
+condition = 3
 start_duration = 0
 duration = 1
 value_bonus = 1
+mult_bonus = 1
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

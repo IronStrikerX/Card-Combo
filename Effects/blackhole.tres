@@ -6,7 +6,7 @@
 script = ExtResource("1_fi8mf")
 type = 1
 condition = 1
-duration = 3
+duration = 4
 value_bonus = 2
 mult_bonus = 2
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

@@ -1,26 +1,34 @@
 extends Control
 
+# ============ Game ==============
 @onready var round_label: Label = %RoundLabel
 @onready var score_label: Label = %ScoreLabel
 @onready var new_cards: HBoxContainer = %NewCards
 @onready var description: Label = %description
 @onready var selected_slot: Control = %SelectedSlot
 @onready var selected_card_name: Label = %name
-
+@export var total_rounds := 10
 
 var selected_card: CardUI
 
-
 func _ready():
-	round_label.text = "round: " + str(DeckManager.current_round) + "/10"
-	score_label.text = str(DeckManager.score)
-	description.text = "none"
 	DeckManager.current_round += 1
-	selected_slot.get_child(0).queue_free()
-	for child in new_cards.get_children():
-		child.queue_free()
+	if DeckManager.current_round >= total_rounds:
+		print("game_ended")
+		get_tree().change_scene_to_file("res://Scenes/EndScreen.tscn")
+	else:
+		round_label.text = "round: " + str(DeckManager.current_round) + "/" + str(total_rounds)
+		score_label.text = str(DeckManager.score)
+		description.text = "none"
 		
-	pick_cards()
+		if DeckManager.current_round >= total_rounds:
+			pass
+			
+		for child in new_cards.get_children():
+			child.queue_free()
+		for child in selected_slot.get_children():
+			child.queue_free()
+		pick_cards()
 	
 func pick_cards():
 	for i in range(5):

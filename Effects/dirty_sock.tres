@@ -6,6 +6,7 @@
 script = ExtResource("1_ma7qp")
 name = "Dirty Sock"
 trigger = 1
-duration = 5
+start_duration = 0
+duration = 4
 mult_bonus = 2
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

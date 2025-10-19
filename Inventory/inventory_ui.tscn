@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8rrss3doimef" path="res://Inventory/inventory_ui.gd" id="1_n0pvb"]
 [ext_resource type="PackedScene" uid="uid://y8buv1lbsbcc" path="res://Card/CardUI/CardUI.tscn" id="2_jhqvo"]
-[ext_resource type="Resource" uid="uid://c3jvmydunt8h3" path="res://Card/StartingDecks/basic.tres" id="2_n0pvb"]
+[ext_resource type="Resource" uid="uid://cw6qblwi5af0n" path="res://Card/StartingDecks/Test.tres" id="2_n0pvb"]
 [ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="4_ju6sq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34y5v"]
@@ -187,12 +187,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_r57pj")
 theme_override_font_sizes/font_size = 16
-text = "this is a test"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PlayButton" type="Button" parent="HBoxContainer/Actions"]
-custom_minimum_size = Vector2(50, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Actions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="DeckSizeLabel" type="Label" parent="HBoxContainer/Actions/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_ju6sq")
+text = "10/10"
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/Actions/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -200,4 +211,4 @@ size_flags_stretch_ratio = 1.95
 theme = SubResource("Theme_o6um4")
 text = "Play"
 
-[connection signal="pressed" from="HBoxContainer/Actions/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

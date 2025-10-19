@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_jw15s")
 name = "Mirror"
-extra_description = "X: current Y: current and next"
+extra_description = "X: current Y: current +2"
 value = 4
 mult = 4.0
 icon = ExtResource("2_oisvn")

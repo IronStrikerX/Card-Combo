@@ -7,7 +7,7 @@ signal effect_subtract()
 
 var starting_deck: StartingDeck
 
-var current_round := 1
+var current_round := 0
 
 var current_deck: Array[CardInstance] = []
 var inplay_deck: Array[CardInstance] = []

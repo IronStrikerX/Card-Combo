@@ -60,16 +60,16 @@ func apply_type(i: int, card: Card):
 			DeckManager.next_card_mult[i][1] += mult_bonus
 		Type.DISCARD_SIZE:
 			@warning_ignore("integer_division")
-			DeckManager.next_card_add[0][0] += DeckManager.discard_deck.size() * int(value_bonus / 2)
+			DeckManager.next_card_add[0][0] += DeckManager.discard_deck.size() * value_bonus
 			@warning_ignore("integer_division")
-			DeckManager.next_card_add[0][1] += DeckManager.discard_deck.size() * int(mult_bonus / 2)
+			DeckManager.next_card_add[0][1] += DeckManager.discard_deck.size() * mult_bonus
 		Type.AMPLIFY:
 			var sum_value := 0
 			var sum_mult := 0
 			for add in range(value_bonus):
 				sum_value += DeckManager.next_card_add[add][0]
 				sum_mult += DeckManager.next_card_add[add][1]
-			for distribute in range(mult_bonus):
+			for distribute in range(1, mult_bonus):
 				DeckManager.next_card_add[distribute][0] += sum_value
 				DeckManager.next_card_add[distribute][1] += sum_mult
 				

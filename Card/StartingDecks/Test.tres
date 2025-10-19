@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="StartingDeck" load_steps=4 format=3 uid="uid://cw6qblwi5af0n"]
+[gd_resource type="Resource" script_class="StartingDeck" load_steps=6 format=3 uid="uid://cw6qblwi5af0n"]
 
 [ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_5mg26"]
-[ext_resource type="Resource" uid="uid://cbx65t4p7swdm" path="res://Card/Cards/hivemind.tres" id="2_74ne8"]
+[ext_resource type="Resource" uid="uid://djirtexfo0fn8" path="res://Card/Cards/pheonix.tres" id="2_74ne8"]
 [ext_resource type="Script" uid="uid://x61ty0id1kar" path="res://CustomResource/starting_deck.gd" id="2_jnhxk"]
+[ext_resource type="Resource" uid="uid://cup3q1ltgsbjd" path="res://Card/Cards/dummy.tres" id="3_7x1bu"]
+[ext_resource type="Resource" uid="uid://dhjb8r01vw7k4" path="res://Card/Cards/mirror.tres" id="4_7x1bu"]
 
 [resource]
 script = ExtResource("2_jnhxk")
-deck = Array[ExtResource("1_5mg26")]([ExtResource("2_74ne8"), ExtResource("2_74ne8"), ExtResource("2_74ne8"), ExtResource("2_74ne8"), ExtResource("2_74ne8"), ExtResource("2_74ne8"), ExtResource("2_74ne8"), ExtResource("2_74ne8")])
+deck = Array[ExtResource("1_5mg26")]([ExtResource("2_74ne8"), ExtResource("3_7x1bu"), ExtResource("3_7x1bu"), ExtResource("3_7x1bu"), ExtResource("3_7x1bu"), ExtResource("3_7x1bu"), ExtResource("3_7x1bu"), ExtResource("4_7x1bu")])
 metadata/_custom_type_script = "uid://x61ty0id1kar"

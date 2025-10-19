@@ -6,6 +6,6 @@
 script = ExtResource("1_q4fkf")
 trigger = 1
 duration = 6
-value_bonus = 1
+value_bonus = 2
 mult_bonus = 3
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

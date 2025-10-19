@@ -1,7 +1,7 @@
 extends Node
 
-const RARITY_WEIGHTS= {"COMMON" : 51, "RARE" : 22, "EPIC" : 12, "LEGENDARY": 9, "MYTHIC" : 6}
-
+const RARITY_WEIGHTS= {"COMMON" : 34, "RARE" : 24, "EPIC" : 20, "LEGENDARY": 12, "MYTHIC" : 8}
+	
 var card_library = preload("res://Card/StartingDecks/all_cards.tres")
 var common: Array[Card]
 var rare: Array[Card]
