@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_aq41c")
+name = null
 type = 8
 start_duration = 0
 duration = 1

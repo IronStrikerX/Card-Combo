@@ -91,8 +91,6 @@ func _on_mouse_clicked(event: InputEvent) -> void:
 		is_animating = true
 		if DeckManager.in_game:
 			DeckManager.discard_card(card)
-			print('discard')
-			print("discard")
 		right_click.emit(self)
 
 		var tween = create_tween().set_parallel(true)

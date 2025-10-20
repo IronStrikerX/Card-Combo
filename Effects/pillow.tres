@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_hicmw")
+name = null
 type = 6
 start_duration = 0
 duration = 2

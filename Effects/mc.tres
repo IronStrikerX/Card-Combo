@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_3xvbu")
-trigger = 1
+name = null
 type = 4
 start_duration = 0
 duration = 1

@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_ke8e1")
+name = null
 type = 1
 condition = 3
+start_duration = null
 duration = 4
 value_bonus = 2
 mult_bonus = 2

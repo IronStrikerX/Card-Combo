@@ -8,5 +8,6 @@ name = "Soda"
 type = 2
 start_duration = 0
 duration = 1
+value_bonus = null
 mult_bonus = 1
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

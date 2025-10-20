@@ -8,5 +8,6 @@ name = "Dirty Sock"
 trigger = 1
 start_duration = 0
 duration = 4
+value_bonus = null
 mult_bonus = 2
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

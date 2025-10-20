@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_qlbhe")
+name = null
 type = 1
+start_duration = null
 duration = 2
 value_bonus = -1
 mult_bonus = -1

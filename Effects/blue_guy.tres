@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_ntkdh")
 name = "Blue Guy"
+start_duration = null
 duration = 2
 value_bonus = 5
+mult_bonus = null
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

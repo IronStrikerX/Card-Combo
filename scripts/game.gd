@@ -170,42 +170,40 @@ func update_buff_label():
 func _on_effect_triggered(card: Card) -> void:
 	if card.icon == null:
 		return
-	
-	# Create a wrapper Control so HBox won't interfere
+
+	# Create wrapper
 	var wrapper = Control.new()
 	wrapper.custom_minimum_size = Vector2(16, 16)
 	effect_icons.add_child(wrapper)
-	
-	# Create the TextureRect for the icon
+
+	# Create icon inside wrapper
 	var icon_sprite = TextureRect.new()
 	icon_sprite.texture = card.icon
 	icon_sprite.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon_sprite.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	icon_sprite.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	icon_sprite.scale = Vector2(0,0) # start tiny
+	icon_sprite.scale = Vector2(0, 0) # start tiny
 	wrapper.add_child(icon_sprite)
-	
+
+	# Connect using the icon (pass *data* only, not nodes that might be freed elsewhere)
 	icon_sprite.connect("mouse_entered", Callable(self, "_on_icon_hovered").bind(icon_sprite, card))
 	icon_sprite.connect("mouse_exited", Callable(self, "_on_icon_exited"))
 	icon_sprite.connect("gui_input", Callable(self, "_on_gui_input"))
-	
-	icon_sprite.pivot_offset = icon_sprite.size / 2
-	panel.pivot_offset = panel.size / 2
-	
-	DeckManager.active_effects.append({
+
+	# store the wrapper & icon (store the icon node for lookups)
+	var entry := {
 		"effect": card.effect,
-		"icon": icon_sprite,   # store the icon, not the wrapper
-		"wrapper": wrapper,    # optional, for layout
+		"icon": icon_sprite,
+		"wrapper": wrapper,
 		"remaining_duration": card.effect.duration
-	})
+	}
+	DeckManager.active_effects.append(entry)
 
-	# Animate the scale to appear
-	var tween = create_tween()
-	tween.tween_property(icon_sprite, "scale", Vector2(1,1), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	
-	# Store active effect
+	# Animate the scale to appear — keep a reference to the tween in the wrapper so we can kill it later if needed
+	var tween := create_tween()
+	wrapper.set_meta("in_icon_tween", tween) # store reference, optional
+	tween.tween_property(icon_sprite, "scale", Vector2(1, 1), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
-	print("added effect icon: ", card.name)
 
 
 
@@ -242,27 +240,52 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _duration_subtract() -> void:
 	var expired: Array = []
+
 	for entry in DeckManager.active_effects:
+		# Defensive: ensure the entry is valid structure
+		if not entry.has("remaining_duration"):
+			continue
+
 		entry["remaining_duration"] -= 1
+
+		# If wrapper no longer exists, mark for removal
+		if not is_instance_valid(entry.get("wrapper")):
+			expired.append(entry)
+			continue
+
 		if entry["remaining_duration"] <= 0:
 			expired.append(entry)
 		else:
-			var tween = create_tween()
-			tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-			tween.parallel().tween_property(entry["wrapper"], "rotation_degrees", 5, 0.07)
-			tween.tween_property(entry["wrapper"], "rotation_degrees", -5, 0.07)
-			tween.tween_property(entry["wrapper"], "rotation_degrees", 0, 0.07)
+			# safe small wiggle animation — ensure wrapper exists
+			var wrapper = entry["wrapper"]
+			if is_instance_valid(wrapper):
+				# If there is a tween stored on the wrapper, kill it before making a new one
+				if wrapper.has_meta("in_icon_tween"):
+					var old_tween = wrapper.get_meta("in_icon_tween")
+					if is_instance_valid(old_tween):
+						old_tween.kill()
+					wrapper.set_meta("in_icon_tween", null)
 
-	# Clean up expired effects
+				var tween = create_tween()
+				wrapper.set_meta("in_icon_tween", tween)
+				tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				tween.parallel().tween_property(wrapper, "rotation_degrees", 5, 0.07)
+				tween.tween_property(wrapper, "rotation_degrees", -5, 0.07)
+				tween.tween_property(wrapper, "rotation_degrees", 0, 0.07)
+
+	# Clean up expired effects (deferred free)
 	for e in expired:
-		if e["wrapper"] and is_instance_valid(e["wrapper"]):
-			pass
-			#var tween = create_tween()
-			#e["icon"].pivot_offset = e["icon"].size / 2
-			#tween.tween_property(e["icon"], "scale", Vector2(0,0), 0.10).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-			#await tween.finished
-			e["wrapper"].queue_free()
+		# stop any active tweens safely
+		var w = e.get("wrapper")
+		if is_instance_valid(w):
+			if w.has_meta("in_icon_tween"):
+				var t = w.get_meta("in_icon_tween")
+				if is_instance_valid(t):
+					t.kill()
+			# Use deferred free (safer inside signal handlers)
+			w.call_deferred("queue_free")
 		DeckManager.active_effects.erase(e)
+
 
 func _on_play_button_pressed() -> void:
 	await get_tree().create_timer(0.15).timeout

@@ -6,6 +6,8 @@
 script = ExtResource("1_yqlhe")
 name = "Investor"
 type = 1
+start_duration = null
 duration = 2
 value_bonus = 1
+mult_bonus = 1
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

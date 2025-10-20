@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_31bfi")
 name = "Flower"
+start_duration = null
 duration = 2
 value_bonus = -1
 mult_bonus = -1

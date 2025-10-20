@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_58dej")
 name = "Dealer"
+start_duration = null
 duration = 4
+value_bonus = null
 mult_bonus = 2
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

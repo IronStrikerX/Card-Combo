@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_gwglu")
+name = null
 type = 7
 start_duration = 0
 duration = 2

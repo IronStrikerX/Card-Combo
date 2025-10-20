@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_raxvf")
+name = null
+start_duration = null
 duration = 9
-value_bonus = 2
-mult_bonus = 2
+value_bonus = 3
+mult_bonus = 3
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

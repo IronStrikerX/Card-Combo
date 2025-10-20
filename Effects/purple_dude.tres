@@ -4,6 +4,8 @@
 
 [resource]
 script = ExtResource("1_mtgh4")
+name = null
+start_duration = null
 duration = 4
 value_bonus = 3
 mult_bonus = 3

@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_ppvh6")
+name = null
 type = 3
+start_duration = null
 duration = 2
 value_bonus = 2
 mult_bonus = 3

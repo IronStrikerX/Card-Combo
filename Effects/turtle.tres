@@ -6,6 +6,7 @@
 script = ExtResource("1_fbte5")
 name = "Turtle"
 condition = 1
+start_duration = null
 duration = 2
 value_bonus = 4
 mult_bonus = 4

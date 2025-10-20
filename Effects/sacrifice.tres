@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_q4fkf")
+name = null
 trigger = 1
 start_duration = 0
 duration = 5

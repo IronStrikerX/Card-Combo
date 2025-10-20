@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_1etgc")
+name = null
+start_duration = null
 duration = 7
-value_bonus = 5
-mult_bonus = 5
+value_bonus = 6
+mult_bonus = 6
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

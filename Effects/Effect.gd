@@ -3,7 +3,7 @@ class_name CardEffectResource
 
 enum Trigger {ON_PLAY, ON_DISCARD, ON_DRAW, IN_DECK, IN_PLAYED_DECK}
 enum Type {ADD, MULTIPLY, DISCARD_SIZE, AMPLIFY, PERMANENT, MAX_DECK_SIZE_ADD, EFFECT_SIZE, EFFECT_SIZE_MULT, AMPLIFY_MULT, DUPLICATE_CARDS}
-enum Condition {NONE, DECK_SIZE_ZERO, AFTER_DISCARD, NO_DISCARD, DISCARD_DECK_SIZE_GREATER_THAN5, PLAYED_DECK_SIZE_ZERO, AFTER_PLAY}
+enum Condition {NONE, DECK_SIZE_ZERO, AFTER_DISCARD, NO_DISCARD, DISCARD_DECK_SIZE_GREATER_THAN5, PLAYED_DECK_SIZE_ZERO, AFTER_PLAY, DECK_SIZE_NOT_ZERO}
 
 @export var name: String = "Unnamed Effect"
 @export var trigger: Trigger
@@ -22,7 +22,6 @@ func on_play(card: Card):
 			for i in range(start_duration, duration):
 				if i < DeckManager.next_card_add.size():
 					apply_type(i, card)
-					print("  Buff applied to next_card_add[", i, "]: +", value_bonus, "value, +", mult_bonus, "mult")
 
 func on_discard(card: Card):
 	if trigger == Trigger.ON_DISCARD:
@@ -32,7 +31,6 @@ func on_discard(card: Card):
 			for i in range(start_duration, duration):
 				if i < DeckManager.next_card_add.size():
 					apply_type(i, card)
-					print("  Buff applied to next_card_add[", i, "]: +", value_bonus, "value, +", mult_bonus, "mult")
 					
 func in_deck(card: Card):
 	if trigger == Trigger.IN_DECK:
@@ -113,11 +111,12 @@ func apply_type(i: int, card: Card):
 func check_conditions() -> bool:
 	match condition:
 		Condition.NONE: return true
-		Condition.DECK_SIZE_ZERO: return DeckManager.inplay_deck.size() == 0	
+		Condition.DECK_SIZE_ZERO: return DeckManager.inplay_deck.size() == 0
 		Condition.AFTER_DISCARD: return DeckManager.just_discarded
 		Condition.NO_DISCARD: return DeckManager.discard_deck.size() == 0
 		Condition.DISCARD_DECK_SIZE_GREATER_THAN5: return DeckManager.discard_deck.size() >= 5
 		Condition.PLAYED_DECK_SIZE_ZERO: return DeckManager.played_deck.size() == 0
 		Condition.AFTER_PLAY: return DeckManager.just_played
+		Condition.DECK_SIZE_NOT_ZERO: return DeckManager.inplay_deck.size() != 0
 		_: return false
 		

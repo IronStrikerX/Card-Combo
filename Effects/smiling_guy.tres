@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_uwpga")
+name = null
+start_duration = null
 duration = 3
 value_bonus = 7
+mult_bonus = null
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

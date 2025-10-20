@@ -77,6 +77,8 @@ var description: String:
 				desc += "\nCondition: Have Not Played A Card"
 			CardEffectResource.Condition.AFTER_PLAY:
 				desc += "\nCondition: After Playing a Card"
+			CardEffectResource.Condition.DECK_SIZE_NOT_ZERO:
+				desc += "\nCondition: Deck Size is Not Empty"
 
 		if effect.duration - 1 > 0:
 			desc += "\nDuration: " + str(effect.duration - 1) + " card(s)"

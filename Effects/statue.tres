@@ -4,9 +4,11 @@
 
 [resource]
 script = ExtResource("1_f6axm")
+name = null
 trigger = 3
 condition = 6
 start_duration = 0
 duration = 1
+value_bonus = null
 mult_bonus = 1
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

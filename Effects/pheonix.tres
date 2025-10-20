@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource("1_ginxb")
+name = null
 type = 1
 condition = 3
+start_duration = null
 duration = 3
+value_bonus = null
 mult_bonus = 2
 metadata/_custom_type_script = "uid://cmtqomlsfmm05"

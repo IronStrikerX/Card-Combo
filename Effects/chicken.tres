@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_0belf")
 name = "Chicken"
+start_duration = null
 duration = 3
 value_bonus = 3
 mult_bonus = 3

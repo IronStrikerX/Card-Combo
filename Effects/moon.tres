@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_sfvu7")
+name = null
 trigger = 2
 condition = 3
 start_duration = 0
