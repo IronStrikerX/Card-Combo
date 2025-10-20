@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://c5q75l1klhwpt"]
+
+[ext_resource type="Resource" uid="uid://db24jink3wp7l" path="res://Effects/little_prince.tres" id="1_1xjwy"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_iv5qh"]
+[ext_resource type="Texture2D" uid="uid://6eweiupqf7hv" path="res://Assets/CardIcon/little prince.png" id="2_hq0fa"]
+
+[resource]
+script = ExtResource("1_iv5qh")
+name = "Little Prince"
+value = 4
+mult = 5.0
+icon = ExtResource("2_hq0fa")
+rarity = 2
+effect = ExtResource("1_1xjwy")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

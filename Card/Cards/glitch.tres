@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://cse2p0k241yin"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_ddsyd"]
+[ext_resource type="Resource" uid="uid://dflwpjm434duo" path="res://Effects/glitch.tres" id="1_dv5ao"]
+[ext_resource type="Texture2D" uid="uid://cv2j0raccwbf8" path="res://Assets/CardIcon/glitch.png" id="2_2xmob"]
+
+[resource]
+script = ExtResource("1_ddsyd")
+name = "Glitch"
+value = 10
+mult = 10.0
+icon = ExtResource("2_2xmob")
+rarity = 4
+effect = ExtResource("1_dv5ao")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

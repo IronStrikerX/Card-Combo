@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://r6m3a2rkc882"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_sns08"]
+[ext_resource type="Resource" uid="uid://b5cs01gfd8qil" path="res://Effects/dark_star.tres" id="1_x4ahr"]
+[ext_resource type="Texture2D" uid="uid://dv3vkbo45qy4t" path="res://Assets/CardIcon/dark star.png" id="2_aa3sb"]
+
+[resource]
+script = ExtResource("1_sns08")
+name = "Dark Star"
+value = 2
+mult = 2.0
+icon = ExtResource("2_aa3sb")
+rarity = 1
+effect = ExtResource("1_x4ahr")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

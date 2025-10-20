@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://vrxkfat2cel6"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_3oaxb"]
+[ext_resource type="Resource" uid="uid://vr0arwsy21yd" path="res://Effects/sad_guy.tres" id="1_8qjuo"]
+[ext_resource type="Texture2D" uid="uid://bkhff8gfppran" path="res://Assets/CardIcon/sad guy.png" id="2_gjgxm"]
+
+[resource]
+script = ExtResource("1_3oaxb")
+name = "Sad Guy"
+value = 12
+mult = 2.0
+icon = ExtResource("2_gjgxm")
+rarity = 2
+effect = ExtResource("1_8qjuo")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

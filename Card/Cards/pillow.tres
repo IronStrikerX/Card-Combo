@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://hafrun6djo5y"]
+
+[ext_resource type="Resource" uid="uid://upp0v1t0gv08" path="res://Effects/pillow.tres" id="1_86yyg"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_soukk"]
+[ext_resource type="Texture2D" uid="uid://cshp1qedg2h6a" path="res://Assets/CardIcon/pillow.png" id="2_h5lra"]
+
+[resource]
+script = ExtResource("1_soukk")
+name = "Pillow"
+extra_description = "X: 3"
+value = 6
+mult = 3.0
+icon = ExtResource("2_h5lra")
+rarity = 2
+effect = ExtResource("1_86yyg")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

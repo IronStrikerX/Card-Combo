@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dy41m6luqu26u"]
+[gd_scene load_steps=21 format=3 uid="uid://dy41m6luqu26u"]
 
 [ext_resource type="Script" uid="uid://cf2t71xhxpkad" path="res://scripts/game.gd" id="1_i6g32"]
 [ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="2_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://y8buv1lbsbcc" path="res://Card/CardUI/CardUI.tscn" id="3_v158k"]
 [ext_resource type="Script" uid="uid://d2tqcjeasi5im" path="res://scripts/deckicon.gd" id="4_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://b81e3aiq8tlxa" path="res://Assets/cardframe/CommonCard.png" id="5_ldgsr"]
 
@@ -138,8 +137,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_1l0tm")
 theme_override_font_sizes/font_size = 16
-text = "v: 0 m: 0
-x1 x1"
+text = "power: +0 | boost: +0
+x1 | x1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -170,9 +169,6 @@ autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CardUI" parent="GameUI/MarginContainer/VBoxContainer/MidLayer/SelectedSlot" instance=ExtResource("3_v158k")]
-layout_mode = 0
-
 [node name="BottomLayer" type="HBoxContainer" parent="GameUI/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -182,24 +178,6 @@ theme_override_constants/separation = 0
 [node name="Hand" type="HBoxContainer" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(216, 55)
-layout_mode = 2
-
-[node name="CardUI" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer/Hand" instance=ExtResource("3_v158k")]
-layout_mode = 2
-
-[node name="CardUI2" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer/Hand" instance=ExtResource("3_v158k")]
-layout_mode = 2
-
-[node name="CardUI3" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer/Hand" instance=ExtResource("3_v158k")]
-layout_mode = 2
-
-[node name="CardUI5" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer/Hand" instance=ExtResource("3_v158k")]
-layout_mode = 2
-
-[node name="CardUI6" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer/Hand" instance=ExtResource("3_v158k")]
-layout_mode = 2
-
-[node name="CardUI4" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer/Hand" instance=ExtResource("3_v158k")]
 layout_mode = 2
 
 [node name="Deck" type="Control" parent="GameUI/MarginContainer/VBoxContainer/BottomLayer"]
@@ -286,6 +264,7 @@ autowrap_mode = 1
 
 [node name="DeckInfo" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15

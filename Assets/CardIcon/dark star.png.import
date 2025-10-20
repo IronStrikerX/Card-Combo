@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6rcnpk42djnb"
-path="res://.godot/imported/pixil-layer-Background Copy (3).png-3b52b2efc5434db1f1ad0660bc23c3eb.ctex"
+uid="uid://dv3vkbo45qy4t"
+path="res://.godot/imported/dark star.png-ad512b24e9f52f9241cdc7c1f1852c51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pixil-layer-Background Copy (3).png"
-dest_files=["res://.godot/imported/pixil-layer-Background Copy (3).png-3b52b2efc5434db1f1ad0660bc23c3eb.ctex"]
+source_file="res://Assets/CardIcon/dark star.png"
+dest_files=["res://.godot/imported/dark star.png-ad512b24e9f52f9241cdc7c1f1852c51.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StartingDeck" load_steps=9 format=3 uid="uid://c3jvmydunt8h3"]
+[gd_resource type="Resource" script_class="StartingDeck" load_steps=12 format=3 uid="uid://c3jvmydunt8h3"]
 
 [ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_k4sk3"]
 [ext_resource type="Script" uid="uid://x61ty0id1kar" path="res://CustomResource/starting_deck.gd" id="2_idivb"]
@@ -8,8 +8,11 @@
 [ext_resource type="Resource" uid="uid://cfhkxfyx8hl7k" path="res://Card/Cards/flower.tres" id="5_bbtij"]
 [ext_resource type="Resource" uid="uid://4lbwuvujhbcn" path="res://Card/Cards/turtle.tres" id="6_tc0d3"]
 [ext_resource type="Resource" uid="uid://cjhbb321kxhw2" path="res://Card/Cards/soda.tres" id="7_pmywr"]
+[ext_resource type="Resource" uid="uid://cmt6uh5a0vwx3" path="res://Card/Cards/sword.tres" id="8_bbtij"]
+[ext_resource type="Resource" uid="uid://behu4mx87qb5c" path="res://Card/Cards/star.tres" id="9_tc0d3"]
+[ext_resource type="Resource" uid="uid://r6m3a2rkc882" path="res://Card/Cards/dark_star.tres" id="10_pmywr"]
 
 [resource]
 script = ExtResource("2_idivb")
-deck = Array[ExtResource("1_k4sk3")]([ExtResource("2_jmqqt"), ExtResource("2_jmqqt"), ExtResource("3_n2wem"), ExtResource("3_n2wem"), ExtResource("4_vg7qp"), ExtResource("5_bbtij"), ExtResource("6_tc0d3"), ExtResource("7_pmywr")])
+deck = Array[ExtResource("1_k4sk3")]([ExtResource("2_jmqqt"), ExtResource("2_jmqqt"), ExtResource("3_n2wem"), ExtResource("3_n2wem"), ExtResource("4_vg7qp"), ExtResource("5_bbtij"), ExtResource("6_tc0d3"), ExtResource("7_pmywr"), ExtResource("8_bbtij"), ExtResource("9_tc0d3"), ExtResource("10_pmywr")])
 metadata/_custom_type_script = "uid://x61ty0id1kar"

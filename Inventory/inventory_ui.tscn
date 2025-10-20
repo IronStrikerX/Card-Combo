@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvkaja3ulrmqs"]
+[gd_scene load_steps=15 format=3 uid="uid://cvkaja3ulrmqs"]
 
 [ext_resource type="Script" uid="uid://c8rrss3doimef" path="res://Inventory/inventory_ui.gd" id="1_n0pvb"]
-[ext_resource type="PackedScene" uid="uid://y8buv1lbsbcc" path="res://Card/CardUI/CardUI.tscn" id="2_jhqvo"]
-[ext_resource type="Resource" uid="uid://cw6qblwi5af0n" path="res://Card/StartingDecks/Test.tres" id="2_n0pvb"]
+[ext_resource type="Resource" uid="uid://c3jvmydunt8h3" path="res://Card/StartingDecks/basic.tres" id="2_6gduq"]
 [ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="4_ju6sq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34y5v"]
@@ -46,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n0pvb")
-starting_deck = ExtResource("2_n0pvb")
+starting_deck = ExtResource("2_6gduq")
 
 [node name="BackgroundColor" type="Control" parent="."]
 layout_mode = 1
@@ -108,51 +107,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 5
-
-[node name="CardUI" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI2" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI3" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI4" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI5" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI6" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI7" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI8" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI9" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI10" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI11" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI12" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI13" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI14" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
-
-[node name="CardUI15" parent="HBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_jhqvo")]
-layout_mode = 2
 
 [node name="Actions" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)

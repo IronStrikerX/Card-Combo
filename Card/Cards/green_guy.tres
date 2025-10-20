@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_j5bp2")
 name = "Green Guy"
-extra_description = "X: current +2  Y: current +4"
+extra_description = "X: 3  Y: 4"
 value = 8
 mult = 6.0
 icon = ExtResource("2_cq8hr")

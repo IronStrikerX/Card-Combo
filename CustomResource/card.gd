@@ -20,34 +20,47 @@ var description: String:
 
 		var desc := ""
 
-		# --- Auto-generated description based on effect ---
 		match effect.trigger:
 			CardEffectResource.Trigger.ON_PLAY:
-				desc += "Trigger: On Play\n"
+				desc += "Trigger: On Play.\n"
 			CardEffectResource.Trigger.ON_DISCARD:
-				desc += "Trigger: On Discard\n"
+				desc += "Trigger: On Discard.\n"
 			CardEffectResource.Trigger.ON_DRAW:
-				desc += "Trigger: On Draw\n"
+				desc += "Trigger: When Drawn.\n"
 			CardEffectResource.Trigger.IN_DECK:
-				desc += "Trigger: In Deck\n"
+				desc += "Trigger: While in Deck.\n"
+			CardEffectResource.Trigger.IN_PLAYED_DECK:
+				desc += "Trigger: Persistent After Play.\n"
+
 
 		match effect.type:
 			CardEffectResource.Type.ADD:
-				desc += "Effect: Add \n"
+				desc += "Effect: Increases:\n"
 			CardEffectResource.Type.MULTIPLY:
-				desc += "Effect: Multiply \n"
+				desc += "Effect: Multiplies: \n"
 			CardEffectResource.Type.DISCARD_SIZE:
-				desc += "Effect: Based on Discard Size "
+				desc += "Effect: Gain extra X Power and Boost for Each Discard\n"
 			CardEffectResource.Type.AMPLIFY:
-				desc += "Effect: Sum up X Rounds And Add it to Y Rounds "
+				desc += "Effect: Adds the combined Power and Boost from upcoming X turns to the next Y rounds.\n"
 			CardEffectResource.Type.PERMANENT:
-				desc += "Effect: Permanently Increase \n"
-		
-		if effect.type != CardEffectResource.Type.DISCARD_SIZE and effect.type != CardEffectResource.Type.AMPLIFY:
+				desc += "Effect: Permanently increase: \n"
+			CardEffectResource.Type.EFFECT_SIZE:
+				desc += "Effect: Adds X Power and Boost depending on how many active effects are in play.\n"
+			CardEffectResource.Type.EFFECT_SIZE_MULT:
+				desc += "Effect: Multiplies Power and Boost based on the number of active effects.\n"
+			CardEffectResource.Type.AMPLIFY_MULT:
+				desc += "Effect: Collects the future X rounds total Power and Boost, then multiplies it across next Y turns.\n"
+			CardEffectResource.Type.DUPLICATE_CARDS:
+				desc += "Effect: Creates duplicates of X random cards (excluding cards with this same effect).\n"
+			CardEffectResource.Type.MAX_DECK_SIZE_ADD:
+				desc += "Effect: Permanently increases your maximum deck size by +1.\n"
+
+
+		if effect.type == CardEffectResource.Type.ADD or effect.type == CardEffectResource.Type.MULTIPLY or effect.type == CardEffectResource.Type.PERMANENT:
 			if effect.value_bonus != 0:
-				desc += "Value: " + str(effect.value_bonus) + " \n"
+				desc += "Power: " + str(effect.value_bonus + (1 if effect.type == CardEffectResource.Type.MULTIPLY else 0)) + " \n"
 			if effect.mult_bonus != 0:
-				desc += "Mult: " + str(effect.mult_bonus) + " "
+				desc += "Boost: " + str(effect.mult_bonus + (1 if effect.type == CardEffectResource.Type.MULTIPLY else 0)) + " "
 
 		match effect.condition:
 			CardEffectResource.Condition.NONE:
@@ -67,6 +80,8 @@ var description: String:
 
 		if effect.duration - 1 > 0:
 			desc += "\nDuration: " + str(effect.duration - 1) + " card(s)"
+		elif effect.type != CardEffectResource.Type.DUPLICATE_CARDS:
+			desc += "\nEffect Applies to Current Card"
 
 		# --- Append designer-specified text ---
 		if extra_description != "":

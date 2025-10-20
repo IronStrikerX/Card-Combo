@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://y8buv1lbsbcc"]
 
-[ext_resource type="Texture2D" uid="uid://b6rcnpk42djnb" path="res://Assets/pixil-layer-Background Copy (3).png" id="1_rrat6"]
+[ext_resource type="Texture2D" uid="uid://b6rcnpk42djnb" path="res://Assets/CardIcon/pixil-layer-Background Copy (3).png" id="1_rrat6"]
 [ext_resource type="Script" uid="uid://bblnxydejet16" path="res://Card/CardUI/card_ui.gd" id="1_wyu6r"]
 [ext_resource type="Texture2D" uid="uid://st77i6xrf7gp" path="res://Assets/cardframe/MythicCard.png" id="2_5s8bc"]
 [ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="3_yd0xe"]

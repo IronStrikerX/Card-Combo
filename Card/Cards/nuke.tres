@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://cnahg20uqp8rs"]
+
+[ext_resource type="Resource" uid="uid://3qwwlpby61gx" path="res://Effects/nuke.tres" id="1_736tt"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_qgc5w"]
+[ext_resource type="Texture2D" uid="uid://csat6p2qtmeyj" path="res://Assets/CardIcon/nuke.png" id="2_rvjys"]
+
+[resource]
+script = ExtResource("1_qgc5w")
+name = "Nuke"
+extra_description = "X: 4 Y: 3"
+value = 3
+mult = 16.0
+icon = ExtResource("2_rvjys")
+rarity = 4
+effect = ExtResource("1_736tt")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

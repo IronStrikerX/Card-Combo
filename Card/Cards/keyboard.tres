@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://kjsc6ku0bcl4"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_3q4cr"]
+[ext_resource type="Resource" uid="uid://c1lo6qef7xc3x" path="res://Effects/keyboard.tres" id="1_tlvrd"]
+[ext_resource type="Texture2D" uid="uid://b3y320vkx6f3b" path="res://Assets/CardIcon/keyboard.png" id="2_j8pht"]
+
+[resource]
+script = ExtResource("1_3q4cr")
+name = "Keyboard"
+value = 4
+mult = 9.0
+icon = ExtResource("2_j8pht")
+rarity = 3
+effect = ExtResource("1_tlvrd")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

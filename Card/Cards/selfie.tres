@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://dua5jprtper11"]
+
+[ext_resource type="Resource" uid="uid://rd3d5d3pxx5k" path="res://Effects/selfie.tres" id="1_6u8ak"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_j71al"]
+[ext_resource type="Texture2D" uid="uid://bdqapks0q3e7j" path="res://Assets/CardIcon/selfie.png" id="2_xcn7f"]
+
+[resource]
+script = ExtResource("1_j71al")
+name = "Selfie"
+extra_description = "X: 2 Y: 1"
+value = 20
+mult = 2.0
+icon = ExtResource("2_xcn7f")
+rarity = 3
+effect = ExtResource("1_6u8ak")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

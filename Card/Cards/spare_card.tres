@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://dtn5jj6q80u74"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_hn4y5"]
+[ext_resource type="Resource" uid="uid://5jywsjqs3ruv" path="res://Effects/spare_card.tres" id="1_tr4w5"]
+[ext_resource type="Texture2D" uid="uid://dpnsp15yy2ox5" path="res://Assets/CardIcon/spare card.png" id="2_bb2l3"]
+
+[resource]
+script = ExtResource("1_hn4y5")
+name = "Spare card"
+value = 1
+mult = 14.0
+icon = ExtResource("2_bb2l3")
+rarity = 2
+effect = ExtResource("1_tr4w5")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

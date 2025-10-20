@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://c2832jrqnn16b"]
+
+[ext_resource type="Resource" uid="uid://b7j7obcfrs5os" path="res://Effects/earth.tres" id="1_jmbwd"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_vscx5"]
+[ext_resource type="Texture2D" uid="uid://dav1n04vkxbgt" path="res://Assets/CardIcon/earth.png" id="2_w0twm"]
+
+[resource]
+script = ExtResource("1_vscx5")
+name = "Earth"
+value = 7
+mult = 10.0
+icon = ExtResource("2_w0twm")
+rarity = 4
+effect = ExtResource("1_jmbwd")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

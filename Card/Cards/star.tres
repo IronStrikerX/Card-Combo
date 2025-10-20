@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://behu4mx87qb5c"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_lpo00"]
+[ext_resource type="Resource" uid="uid://nu6m1hvf5kb5" path="res://Effects/star.tres" id="1_mbx0t"]
+[ext_resource type="Texture2D" uid="uid://bnm5lgkt68gcx" path="res://Assets/CardIcon/star.png" id="2_jyy81"]
+
+[resource]
+script = ExtResource("1_lpo00")
+name = "Star"
+value = 2
+mult = 2.0
+icon = ExtResource("2_jyy81")
+rarity = 1
+effect = ExtResource("1_mbx0t")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

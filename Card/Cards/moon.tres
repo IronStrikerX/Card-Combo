@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bdorracyc3rda"]
+
+[ext_resource type="Resource" uid="uid://taet367dx0ln" path="res://Effects/moon.tres" id="1_7xvt2"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_wwiee"]
+[ext_resource type="Texture2D" uid="uid://2o3go0k6o01b" path="res://Assets/CardIcon/moon.png" id="2_dcpxu"]
+
+[resource]
+script = ExtResource("1_wwiee")
+name = "Moon"
+value = 9
+mult = 5.0
+icon = ExtResource("2_dcpxu")
+rarity = 3
+effect = ExtResource("1_7xvt2")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

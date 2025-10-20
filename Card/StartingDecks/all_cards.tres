@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StartingDeck" load_steps=33 format=3 uid="uid://b3ch3wbwetug"]
+[gd_resource type="Resource" script_class="StartingDeck" load_steps=51 format=3 uid="uid://b3ch3wbwetug"]
 
 [ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_c3s24"]
 [ext_resource type="Resource" uid="uid://csm1kkmdqmul2" path="res://Card/Cards/blue_guy.tres" id="2_j2etk"]
@@ -32,8 +32,26 @@
 [ext_resource type="Resource" uid="uid://bl7wxwtjj84rr" path="res://Card/Cards/potion.tres" id="30_823xo"]
 [ext_resource type="Resource" uid="uid://dfd02orv2jmmt" path="res://Card/Cards/green_guy.tres" id="31_t16pd"]
 [ext_resource type="Resource" uid="uid://cbx65t4p7swdm" path="res://Card/Cards/hivemind.tres" id="32_823xo"]
+[ext_resource type="Resource" uid="uid://vrxkfat2cel6" path="res://Card/Cards/sad_guy.tres" id="32_a34u3"]
+[ext_resource type="Resource" uid="uid://c5q75l1klhwpt" path="res://Card/Cards/little_prince.tres" id="33_etko2"]
+[ext_resource type="Resource" uid="uid://bdorracyc3rda" path="res://Card/Cards/moon.tres" id="34_l1wfm"]
+[ext_resource type="Resource" uid="uid://dq7cgh0vu5cho" path="res://Card/Cards/queen.tres" id="35_e040r"]
+[ext_resource type="Resource" uid="uid://cl6fx5swas7si" path="res://Card/Cards/mc.tres" id="36_rvjsq"]
+[ext_resource type="Resource" uid="uid://c0nhfdedl40lx" path="res://Card/Cards/king.tres" id="37_djn8i"]
+[ext_resource type="Resource" uid="uid://c2832jrqnn16b" path="res://Card/Cards/earth.tres" id="38_rvjsq"]
+[ext_resource type="Resource" uid="uid://15jp4rx4qgx" path="res://Card/Cards/clean_sock.tres" id="39_djn8i"]
+[ext_resource type="Resource" uid="uid://kjsc6ku0bcl4" path="res://Card/Cards/keyboard.tres" id="40_edahg"]
+[ext_resource type="Resource" uid="uid://dtn5jj6q80u74" path="res://Card/Cards/spare_card.tres" id="41_148d3"]
+[ext_resource type="Resource" uid="uid://r6m3a2rkc882" path="res://Card/Cards/dark_star.tres" id="42_148d3"]
+[ext_resource type="Resource" uid="uid://bkaa1cs6crbs3" path="res://Card/Cards/void.tres" id="43_g8mx6"]
+[ext_resource type="Resource" uid="uid://cse2p0k241yin" path="res://Card/Cards/glitch.tres" id="44_41kda"]
+[ext_resource type="Resource" uid="uid://dua5jprtper11" path="res://Card/Cards/selfie.tres" id="45_ye6ba"]
+[ext_resource type="Resource" uid="uid://cnahg20uqp8rs" path="res://Card/Cards/nuke.tres" id="46_gbdsd"]
+[ext_resource type="Resource" uid="uid://c3aygljvy118w" path="res://Card/Cards/monolith.tres" id="47_4teb1"]
+[ext_resource type="Resource" uid="uid://st1ih45oekaw" path="res://Card/Cards/snow_globe.tres" id="48_4x12v"]
+[ext_resource type="Resource" uid="uid://hafrun6djo5y" path="res://Card/Cards/pillow.tres" id="49_4x12v"]
 
 [resource]
 script = ExtResource("2_qcaid")
-deck = Array[ExtResource("1_c3s24")]([ExtResource("9_ppwbu"), ExtResource("3_j2etk"), ExtResource("11_in0f0"), ExtResource("16_sgfhb"), ExtResource("13_s3igk"), ExtResource("14_7vfqq"), ExtResource("10_w45xg"), ExtResource("2_j2etk"), ExtResource("7_ejuys"), ExtResource("12_in0f0"), ExtResource("15_f34d6"), ExtResource("17_10e3x"), ExtResource("18_vrj2j"), ExtResource("19_vrj2j"), ExtResource("20_lh53h"), ExtResource("17_sgfhb"), ExtResource("18_lh53h"), ExtResource("19_ta2qi"), ExtResource("20_ta2qi"), ExtResource("21_wlrin"), ExtResource("22_wlrin"), ExtResource("23_tn00y"), ExtResource("24_8fvfv"), ExtResource("26_0ymoo"), ExtResource("27_6u6qa"), ExtResource("28_t16pd"), ExtResource("6_251mt"), ExtResource("30_823xo"), ExtResource("31_t16pd"), ExtResource("32_823xo")])
+deck = Array[ExtResource("1_c3s24")]([ExtResource("9_ppwbu"), ExtResource("3_j2etk"), ExtResource("11_in0f0"), ExtResource("16_sgfhb"), ExtResource("13_s3igk"), ExtResource("14_7vfqq"), ExtResource("10_w45xg"), ExtResource("2_j2etk"), ExtResource("7_ejuys"), ExtResource("12_in0f0"), ExtResource("15_f34d6"), ExtResource("17_10e3x"), ExtResource("18_vrj2j"), ExtResource("19_vrj2j"), ExtResource("20_lh53h"), ExtResource("17_sgfhb"), ExtResource("18_lh53h"), ExtResource("19_ta2qi"), ExtResource("20_ta2qi"), ExtResource("21_wlrin"), ExtResource("22_wlrin"), ExtResource("23_tn00y"), ExtResource("24_8fvfv"), ExtResource("26_0ymoo"), ExtResource("27_6u6qa"), ExtResource("28_t16pd"), ExtResource("6_251mt"), ExtResource("30_823xo"), ExtResource("31_t16pd"), ExtResource("32_823xo"), ExtResource("32_a34u3"), ExtResource("33_etko2"), ExtResource("34_l1wfm"), ExtResource("35_e040r"), ExtResource("36_rvjsq"), ExtResource("37_djn8i"), ExtResource("38_rvjsq"), ExtResource("39_djn8i"), ExtResource("40_edahg"), ExtResource("41_148d3"), ExtResource("42_148d3"), ExtResource("43_g8mx6"), ExtResource("44_41kda"), ExtResource("45_ye6ba"), ExtResource("46_gbdsd"), ExtResource("47_4teb1"), ExtResource("48_4x12v"), ExtResource("49_4x12v")])
 metadata/_custom_type_script = "uid://x61ty0id1kar"

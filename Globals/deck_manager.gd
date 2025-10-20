@@ -8,11 +8,14 @@ signal effect_subtract()
 var starting_deck: StartingDeck
 
 var current_round := 0
+var max_deck_size := 25
 
 var current_deck: Array[CardInstance] = []
 var inplay_deck: Array[CardInstance] = []
 var discard_deck: Array[CardInstance] = []
 var played_deck: Array[CardInstance] = []
+
+var active_effects := [] 
 
 var score: int = 0
 var has_started := false
@@ -42,14 +45,15 @@ func start_round():
 	next_card_add = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 	next_card_mult = [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]
 	inplay_deck = current_deck.duplicate()
+	discard_deck.clear()
+	played_deck.clear()
 
 func draw_card() -> CardInstance:
 	if inplay_deck.is_empty():
 		return null
-
 	var drawn_card = inplay_deck.pop_front()
 	drawn_card.data.effect.on_draw(drawn_card.data)
-
+	
 	return drawn_card
 
 
@@ -57,6 +61,7 @@ func play_card(card: CardInstance) -> void:
 	just_discarded = false
 	just_played = true
 	played_deck.append(card)
+
 
 func discard_card(card: CardInstance) -> void:
 	just_discarded = true
@@ -73,7 +78,7 @@ func apply_score(card: CardInstance) -> int:
 	card.data.effect.on_play(card.data)
 	next_card_add[0][0] += card.value
 	next_card_add[0][1] += card.mult
-	
+
 	var round_score = next_card_add[0][0] * next_card_add[0][1] * next_card_mult[0][0] * next_card_mult[0][1] 
 	for i in range(5):
 		next_card_add[i][0] = next_card_add[i + 1][0]
@@ -81,11 +86,11 @@ func apply_score(card: CardInstance) -> int:
 		next_card_mult[i][0] = next_card_mult[i + 1][0]
 		next_card_mult[i][1] = next_card_mult[i + 1][1]
 		
-	if card.data.effect.type == CardEffectResource.Type.PERMANENT:
+	if card.data.effect.type == CardEffectResource.Type.PERMANENT and card.data.effect.trigger == CardEffectResource.Trigger.ON_PLAY:
 		card.value += card.data.effect.value_bonus
 		card.mult += card.data.effect.mult_bonus
-
-	
+		
+		
 	emit_signal("effect_subtract")
 	return round_score
 
@@ -94,6 +99,9 @@ func in_deck_effect(initializing: bool = true):
 		first_discard = true
 		for card in inplay_deck:
 			card.data.effect.in_deck(card.data)
+		for card2 in played_deck:
+			card2.data.effect.in_played_deck(card2.data)
+	
 func show_current_buffs():
 	for i in range(next_card_add.size()):
 		print(i, ". +", next_card_add[i], " add\n", "   +",next_card_mult[i], " multiply" )

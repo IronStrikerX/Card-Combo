@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://bkaa1cs6crbs3"]
+
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_87gfq"]
+[ext_resource type="Resource" uid="uid://bkonp7d4002du" path="res://Effects/void.tres" id="1_cr2m5"]
+[ext_resource type="Texture2D" uid="uid://cvotbaboe3y4i" path="res://Assets/CardIcon/void.png" id="2_qya0q"]
+
+[resource]
+script = ExtResource("1_87gfq")
+name = "Void"
+value = 5
+mult = 9.0
+icon = ExtResource("2_qya0q")
+rarity = 3
+effect = ExtResource("1_cr2m5")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

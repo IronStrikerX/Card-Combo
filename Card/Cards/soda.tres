@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_b5h6d")
 name = "Soda"
-extra_description = "plus one mult  per discarded card"
+extra_description = "X: 1"
 value = 6
 mult = 1.0
 icon = ExtResource("3_3ygvx")

@@ -6,8 +6,8 @@ extends Control
 @onready var description: Label = %Description
 @onready var selected_card_name: Label = %SelectedCardName
 @onready var deck_size_label: Label = %DeckSizeLabel
+
 @export var starting_deck: StartingDeck
-@export var max_deck_size: int = 25
 
 var selected_card: CardUI = null
 
@@ -67,8 +67,8 @@ func deselect(card_ui: CardUI):
 		selected_card_name.text = ""
 
 func update_deck_size_label():
-	deck_size_label.text = str(DeckManager.current_deck.size()) + "/" + str(max_deck_size)
-	if DeckManager.current_deck.size() > max_deck_size:
+	deck_size_label.text = str(DeckManager.current_deck.size()) + "/" + str(DeckManager.max_deck_size)
+	if DeckManager.current_deck.size() > DeckManager.max_deck_size:
 		deck_size_label.add_theme_color_override("font_color", Color(0.514, 0.0, 0.0, 1.0))
 	else:
 		deck_size_label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
@@ -78,7 +78,7 @@ func _on_card_discard(card_ui: CardUI):
 	update_deck_size_label()
 	
 func _on_play_button_pressed() -> void:
-	if DeckManager.current_deck.size() > max_deck_size:
+	if DeckManager.current_deck.size() > DeckManager.max_deck_size:
 		var tween = create_tween()
 		tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween.parallel().tween_property(deck_size_label, "rotation_degrees", 5, 0.07)

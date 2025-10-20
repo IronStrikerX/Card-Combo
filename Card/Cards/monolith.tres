@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://c3aygljvy118w"]
+
+[ext_resource type="Resource" uid="uid://dikty4x103ax7" path="res://Effects/monolith.tres" id="1_1fk4v"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_vdtj7"]
+[ext_resource type="Texture2D" uid="uid://g7ehtkmyodj2" path="res://Assets/CardIcon/monolith.png" id="2_jkgvb"]
+
+[resource]
+script = ExtResource("1_vdtj7")
+name = "Monolith"
+extra_description = "X: 8 "
+value = 6
+mult = 6.0
+icon = ExtResource("2_jkgvb")
+rarity = 4
+effect = ExtResource("1_1fk4v")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

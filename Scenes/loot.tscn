@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl1ocpkhi3kaf"]
+[gd_scene load_steps=9 format=3 uid="uid://dl1ocpkhi3kaf"]
 
 [ext_resource type="Script" uid="uid://bp23xdkrpbkvx" path="res://scripts/loot.gd" id="1_dvcho"]
 [ext_resource type="FontFile" uid="uid://bxcm7p0r1l0ke" path="res://CustomResource/m3x6.ttf" id="2_lk60n"]
-[ext_resource type="PackedScene" uid="uid://y8buv1lbsbcc" path="res://Card/CardUI/CardUI.tscn" id="3_h4ol7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e547a"]
 bg_color = Color(0.21960784, 0.2509804, 0.06666667, 1)
@@ -29,7 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dvcho")
-total_rounds = 2
+total_rounds = 15
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -79,9 +78,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="CardUI" parent="MarginContainer/VBoxContainer/HBoxContainer2/SelectedSlot" instance=ExtResource("3_h4ol7")]
-layout_mode = 0
-
 [node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -107,21 +103,6 @@ theme_override_constants/separation = 14
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
-
-[node name="CardUI" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("3_h4ol7")]
-layout_mode = 2
-
-[node name="CardUI2" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("3_h4ol7")]
-layout_mode = 2
-
-[node name="CardUI3" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("3_h4ol7")]
-layout_mode = 2
-
-[node name="CardUI4" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("3_h4ol7")]
-layout_mode = 2
-
-[node name="CardUI5" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NewCards" instance=ExtResource("3_h4ol7")]
-layout_mode = 2
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://st1ih45oekaw"]
+
+[ext_resource type="Resource" uid="uid://ck0hyomcaorfr" path="res://Effects/snow_globe.tres" id="1_518qt"]
+[ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_n3m31"]
+[ext_resource type="Texture2D" uid="uid://bakwsltrclnqq" path="res://Assets/CardIcon/snow_globe.png" id="2_7bdn5"]
+
+[resource]
+script = ExtResource("1_n3m31")
+name = "Snow Globe"
+extra_description = "X: 2"
+value = 12
+mult = 2.0
+icon = ExtResource("2_7bdn5")
+rarity = 2
+effect = ExtResource("1_518qt")
+metadata/_custom_type_script = "uid://663ybq4j1xqo"

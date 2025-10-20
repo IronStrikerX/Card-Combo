@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://c0nhfdedl40lx"]
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://c0nhfdedl40lx"]
 
 [ext_resource type="Script" uid="uid://663ybq4j1xqo" path="res://CustomResource/card.gd" id="1_d2jfs"]
+[ext_resource type="Resource" uid="uid://cnkdvgi0ollsc" path="res://Effects/king.tres" id="1_q2ftb"]
+[ext_resource type="Texture2D" uid="uid://bbiupb81csflu" path="res://Assets/CardIcon/king.png" id="2_lsv7f"]
 
 [resource]
 script = ExtResource("1_d2jfs")
 name = "King"
-description = "its a rare king"
-value = 5
-mult = 10.0
-rarity = 1
+value = 9
+mult = 8.0
+icon = ExtResource("2_lsv7f")
+rarity = 3
+effect = ExtResource("1_q2ftb")
 metadata/_custom_type_script = "uid://663ybq4j1xqo"

@@ -23,7 +23,7 @@ var score: int : set = _set_score
 
 var effect_duration_left: int
 
-var active_effects := [] 
+
 
 var icon_clicked := false
 
@@ -37,7 +37,8 @@ func _ready() -> void:
 	DeckManager.connect("effect_subtract", Callable(self, "_duration_subtract"))
 	deck_info.visible = false
 
-	selected_slot.get_child(0).queue_free()
+	for child in selected_slot.get_children():
+		child.queue_free()
 	for child in hand.get_children():
 		child.queue_free()
 	for child in effect_icons.get_children():
@@ -164,7 +165,7 @@ func _on_deck_info_clicked():
 		card_ui.connect("select_card", Callable(self, "_on_card_selected"))
 	
 func update_buff_label():
-	buff_label.text = "v: %s m: %s\nx%s x%s" % [DeckManager.next_card_add[0][0], DeckManager.next_card_add[0][1], DeckManager.next_card_mult[0][0], DeckManager.next_card_mult[0][1]]
+	buff_label.text = "power: +%s | boost: +%s\nx%s | x%s" % [DeckManager.next_card_add[0][0], DeckManager.next_card_add[0][1], DeckManager.next_card_mult[0][0], DeckManager.next_card_mult[0][1]]
 
 func _on_effect_triggered(card: Card) -> void:
 	if card.icon == null:
@@ -191,7 +192,7 @@ func _on_effect_triggered(card: Card) -> void:
 	icon_sprite.pivot_offset = icon_sprite.size / 2
 	panel.pivot_offset = panel.size / 2
 	
-	active_effects.append({
+	DeckManager.active_effects.append({
 		"effect": card.effect,
 		"icon": icon_sprite,   # store the icon, not the wrapper
 		"wrapper": wrapper,    # optional, for layout
@@ -211,7 +212,7 @@ func _on_effect_triggered(card: Card) -> void:
 func _on_icon_hovered(icon_sprite: TextureRect, card: Card):
 	# Find the active effect entry that corresponds to this icon
 	var remaining_duration = ""
-	for entry in active_effects:
+	for entry in DeckManager.active_effects:
 		if entry["icon"] == icon_sprite:
 			remaining_duration = str(entry["remaining_duration"])
 			break
@@ -224,8 +225,6 @@ func _on_icon_hovered(icon_sprite: TextureRect, card: Card):
 		tween2.tween_property(panel, "scale", Vector2(1, 1), 0.1)
 	
 	panel.visible = true
-
-
 
 func _on_icon_exited():
 	if not icon_clicked:
@@ -243,7 +242,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _duration_subtract() -> void:
 	var expired: Array = []
-	for entry in active_effects:
+	for entry in DeckManager.active_effects:
 		entry["remaining_duration"] -= 1
 		if entry["remaining_duration"] <= 0:
 			expired.append(entry)
@@ -263,10 +262,10 @@ func _duration_subtract() -> void:
 			#tween.tween_property(e["icon"], "scale", Vector2(0,0), 0.10).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 			#await tween.finished
 			e["wrapper"].queue_free()
-		active_effects.erase(e)
+		DeckManager.active_effects.erase(e)
 
 func _on_play_button_pressed() -> void:
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.15).timeout
 	for child in grid_container_deck_info.get_children():
 		child.queue_free()
 	for child in selected_slot_deck_info.get_children():

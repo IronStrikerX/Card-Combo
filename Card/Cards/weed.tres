@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_cn7cs")
 name = "Weed"
-value = 7
-mult = 7.0
+value = 12
+mult = 12.0
 icon = ExtResource("2_pyqyr")
 rarity = 2
 effect = ExtResource("1_wyviv")

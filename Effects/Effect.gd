@@ -1,8 +1,8 @@
 extends Resource
 class_name CardEffectResource
 
-enum Trigger {ON_PLAY, ON_DISCARD, ON_DRAW, IN_DECK}
-enum Type {ADD, MULTIPLY, DISCARD_SIZE, AMPLIFY, PERMANENT}
+enum Trigger {ON_PLAY, ON_DISCARD, ON_DRAW, IN_DECK, IN_PLAYED_DECK}
+enum Type {ADD, MULTIPLY, DISCARD_SIZE, AMPLIFY, PERMANENT, MAX_DECK_SIZE_ADD, EFFECT_SIZE, EFFECT_SIZE_MULT, AMPLIFY_MULT, DUPLICATE_CARDS}
 enum Condition {NONE, DECK_SIZE_ZERO, AFTER_DISCARD, NO_DISCARD, DISCARD_DECK_SIZE_GREATER_THAN5, PLAYED_DECK_SIZE_ZERO, AFTER_PLAY}
 
 @export var name: String = "Unnamed Effect"
@@ -50,6 +50,14 @@ func on_draw(card: Card):
 			for i in range(start_duration, duration):
 				apply_type(i, card)
 				
+func in_played_deck(card: Card):
+	if trigger == Trigger.IN_PLAYED_DECK:
+		if check_conditions():
+			print("Effect triggered PLAYED:", name, "from card:", card.name)
+			DeckManager.emit_signal("effect_triggered", card)
+			for i in range(start_duration, duration):
+				apply_type(i, card)
+			
 func apply_type(i: int, card: Card):
 	match type:
 		Type.ADD: 
@@ -59,24 +67,53 @@ func apply_type(i: int, card: Card):
 			DeckManager.next_card_mult[i][0] += value_bonus
 			DeckManager.next_card_mult[i][1] += mult_bonus
 		Type.DISCARD_SIZE:
-			@warning_ignore("integer_division")
 			DeckManager.next_card_add[0][0] += DeckManager.discard_deck.size() * value_bonus
-			@warning_ignore("integer_division")
 			DeckManager.next_card_add[0][1] += DeckManager.discard_deck.size() * mult_bonus
+		Type.DISCARD_SIZE:
+			DeckManager.next_card_mult[0][0] += DeckManager.discard_deck.size() * value_bonus
+			DeckManager.next_card_mult[0][1] += DeckManager.discard_deck.size() * mult_bonus
 		Type.AMPLIFY:
 			var sum_value := 0
 			var sum_mult := 0
-			for add in range(value_bonus):
+			for add in range(value_bonus):	
 				sum_value += DeckManager.next_card_add[add][0]
 				sum_mult += DeckManager.next_card_add[add][1]
 			for distribute in range(1, mult_bonus):
 				DeckManager.next_card_add[distribute][0] += sum_value
 				DeckManager.next_card_add[distribute][1] += sum_mult
-				
+		Type.PERMANENT:
+			if not trigger == Trigger.ON_PLAY:
+				card.value += value_bonus
+				card.mult += mult_bonus
+		Type.MAX_DECK_SIZE_ADD:
+			DeckManager.max_deck_size += 1
+		Type.EFFECT_SIZE:
+			DeckManager.next_card_add[0][0] += DeckManager.active_effects.size() * value_bonus
+			DeckManager.next_card_add[0][1] += DeckManager.active_effects.size() * mult_bonus
+		Type.EFFECT_SIZE_MULT:
+			DeckManager.next_card_mult[0][0] += DeckManager.active_effects.size() * value_bonus
+			DeckManager.next_card_mult[0][1] += DeckManager.active_effects.size() * mult_bonus
+		Type.AMPLIFY_MULT:
+			var sum_value := 0
+			var sum_mult := 0
+			for mult in range(value_bonus):	
+				sum_value += DeckManager.next_card_mult[mult][0]
+				sum_mult += DeckManager.next_card_mult[mult][1]
+			for distribute in range(1, mult_bonus):
+				DeckManager.next_card_mult[distribute][0] += sum_value
+				DeckManager.next_card_mult[distribute][1] += sum_mult
+		Type.DUPLICATE_CARDS:
+			var card_count = value_bonus
+			while card_count > 0:
+				var random_card = DeckManager.current_deck.pick_random()
+				if random_card.data.effect.type != Type.DUPLICATE_CARDS:
+					card_count -= 1
+					DeckManager.inplay_deck.append(random_card)
+
 func check_conditions() -> bool:
 	match condition:
 		Condition.NONE: return true
-		Condition.DECK_SIZE_ZERO: return DeckManager.inplay_deck.size() == 0
+		Condition.DECK_SIZE_ZERO: return DeckManager.inplay_deck.size() == 0	
 		Condition.AFTER_DISCARD: return DeckManager.just_discarded
 		Condition.NO_DISCARD: return DeckManager.discard_deck.size() == 0
 		Condition.DISCARD_DECK_SIZE_GREATER_THAN5: return DeckManager.discard_deck.size() >= 5
