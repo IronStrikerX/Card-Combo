@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_ddsyd")
 name = "Glitch"
+extra_description = "X: 2P"
 value = 10
 mult = 10.0
 icon = ExtResource("2_2xmob")

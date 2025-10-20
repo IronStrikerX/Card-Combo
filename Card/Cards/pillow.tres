@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_soukk")
 name = "Pillow"
-extra_description = "X: 3"
+extra_description = "X: 5"
 value = 6
 mult = 3.0
 icon = ExtResource("2_h5lra")

@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_iv5qh")
 name = "Little Prince"
-value = 4
-mult = 5.0
+value = 6
+mult = 6.0
 icon = ExtResource("2_hq0fa")
 rarity = 2
 effect = ExtResource("1_1xjwy")

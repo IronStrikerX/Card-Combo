@@ -47,7 +47,7 @@ var description: String:
 			CardEffectResource.Type.EFFECT_SIZE:
 				desc += "Effect: Adds X Power and Boost depending on how many active effects are in play.\n"
 			CardEffectResource.Type.EFFECT_SIZE_MULT:
-				desc += "Effect: Multiplies Power and Boost based on the number of active effects.\n"
+				desc += "Effect: Multiplies X Power and Boost based on the number of active effects.\n"
 			CardEffectResource.Type.AMPLIFY_MULT:
 				desc += "Effect: Collects the future X rounds total Power and Boost, then multiplies it across next Y turns.\n"
 			CardEffectResource.Type.DUPLICATE_CARDS:
